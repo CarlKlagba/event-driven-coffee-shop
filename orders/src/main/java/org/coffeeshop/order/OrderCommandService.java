@@ -1,9 +1,9 @@
-package org.coffeshop.order;
+package org.coffeeshop.order;
 
-import org.coffeshop.event.EventPublisher;
-import org.coffeshop.event.entities.BeanSpecie;
-import org.coffeshop.event.entities.CoffeeType;
-import org.coffeshop.event.entities.OrderPlaced;
+import org.coffeeshop.event.EventPublisher;
+import org.coffeeshop.event.entities.BeanSpecie;
+import org.coffeeshop.event.entities.CoffeeType;
+import org.coffeeshop.event.entities.OrderPlaced;
 
 /**
  * Created by User on 22/05/2018.

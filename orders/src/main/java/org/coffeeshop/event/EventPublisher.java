@@ -1,6 +1,6 @@
-package org.coffeshop.event;
+package org.coffeeshop.event;
 
-import org.coffeshop.event.entities.OrderPlaced;
+import org.coffeeshop.event.entities.OrderPlaced;
 
 /**
  * Created by User on 22/05/2018.
