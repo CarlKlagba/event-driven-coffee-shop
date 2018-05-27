@@ -3,7 +3,8 @@ package org.coffeeshop.order;
 import org.coffeeshop.event.entities.BeanSpecie;
 import org.coffeeshop.event.entities.CoffeeType;
 import org.coffeeshop.event.entities.OrderedBeansValidated;
-import org.coffeshop.event.entities.CoffeeBrewStarted;
+import org.coffeeshop.event.entities.CoffeeBrewFinished;
+import org.coffeeshop.event.entities.CoffeeBrewStarted;
 import org.junit.Test;
 
 import static org.mockito.Mockito.mock;
@@ -16,7 +17,7 @@ public class OrderEventHandlerTest {
     OrderEventHandler sut = new OrderEventHandler(orderCommandService);
 
     @Test
-    public void should_handle_when_ordered_beans_are_validated() throws Exception {
+    public void should_accept_order_when_ordered_beans_are_validated() throws Exception {
         //GIVEN
         OrderedBeansValidated orderedBeansValidated = new OrderedBeansValidated(CoffeeType.LONGO, BeanSpecie.ROBUSTO);
         //WHEN
@@ -26,12 +27,22 @@ public class OrderEventHandlerTest {
     }
 
     @Test
-    public void should_handle_when_coffee_brew_has_started() throws Exception {
+    public void should_start_order_when_coffee_brew_has_started() throws Exception {
         //GIVEN
         CoffeeBrewStarted coffeeBrewStarted = new CoffeeBrewStarted(CoffeeType.LONGO, BeanSpecie.ROBUSTO);
         //WHEN
         sut.handle(coffeeBrewStarted);
         //THEN
         verify(orderCommandService, times(1)).startOrder(CoffeeType.LONGO, BeanSpecie.ROBUSTO);
+    }
+
+    @Test
+    public void should_finish_order_when_coffee_brew_has_finished() throws Exception {
+        //GIVEN
+        CoffeeBrewFinished coffeeBrewFinished = new CoffeeBrewFinished(CoffeeType.LONGO, BeanSpecie.ROBUSTO);
+        //WHEN
+        sut.handle(coffeeBrewFinished);
+        //THEN
+        verify(orderCommandService, times(1)).finishOrder(CoffeeType.LONGO, BeanSpecie.ROBUSTO);
     }
 }
