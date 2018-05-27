@@ -1,7 +1,4 @@
-package org.coffeshop.event.entities;
-
-import org.coffeeshop.event.entities.BeanSpecie;
-import org.coffeeshop.event.entities.CoffeeType;
+package org.coffeeshop.event.entities;
 
 public class OrderAccepted {
     private final BeanSpecie beanSpecie;

@@ -24,4 +24,8 @@ public class OrderCommandService {
     public void acceptOrder(final CoffeeType coffeeType, final BeanSpecie beanSpecie) {
         eventPublisher.publish(new OrderAccepted(coffeeType, beanSpecie));
     }
+
+    public void startOrder(final CoffeeType longo, final BeanSpecie robusto) {
+
+    }
 }

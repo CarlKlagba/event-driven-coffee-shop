@@ -3,6 +3,7 @@ package org.coffeeshop.order;
 import org.coffeeshop.event.entities.BeanSpecie;
 import org.coffeeshop.event.entities.CoffeeType;
 import org.coffeeshop.event.entities.OrderedBeansValidated;
+import org.coffeshop.event.entities.CoffeeBrewStarted;
 import org.junit.Test;
 
 import static org.mockito.Mockito.mock;
@@ -22,5 +23,15 @@ public class OrderEventHandlerTest {
         sut.handle(orderedBeansValidated);
         //THEN
         verify(orderCommandService, times(1)).acceptOrder(CoffeeType.LONGO, BeanSpecie.ROBUSTO);
+    }
+
+    @Test
+    public void should_handle_when_coffee_brew_has_started() throws Exception {
+        //GIVEN
+        CoffeeBrewStarted coffeeBrewStarted = new CoffeeBrewStarted(CoffeeType.LONGO, BeanSpecie.ROBUSTO);
+        //WHEN
+        sut.handle(coffeeBrewStarted);
+        //THEN
+        verify(orderCommandService, times(1)).startOrder(CoffeeType.LONGO, BeanSpecie.ROBUSTO);
     }
 }
